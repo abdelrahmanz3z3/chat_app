@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="chatMessage"
+            type="com.example.chat_app.firestore.model.ChatMessage" />
+
+        <variable
+            name="user"
+            type="com.example.chat_app.firestore.model.User" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/istock"
+            app:layout_constraintBottom_toBottomOf="@+id/lin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:riv_corner_radius="20dp" />
+
+        <LinearLayout
+            android:id="@+id/lin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sent_message_background"
+            android:orientation="vertical"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/profile"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@{chatMessage.content}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:text="Lorem ipsum dolor sit amet," />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:text="@{chatMessage.formatTime()}" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
